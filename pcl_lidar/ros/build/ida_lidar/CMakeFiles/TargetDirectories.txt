@@ -1,0 +1,10 @@
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/uninstall.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/ida_lidar_uninstall.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/buoy_lidar.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/test.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/edit_cache.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/rebuild_cache.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/list_install_components.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/install.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/install/local.dir
+/home/vboxuser/Desktop/pcl/ros/build/ida_lidar/CMakeFiles/install/strip.dir

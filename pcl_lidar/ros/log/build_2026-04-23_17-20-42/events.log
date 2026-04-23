@@ -1,0 +1,182 @@
+[0.000000] (-) TimerEvent: {}
+[0.000564] (ida_lidar) JobQueued: {'identifier': 'ida_lidar', 'dependencies': OrderedDict()}
+[0.000813] (ida_lidar) JobStarted: {'identifier': 'ida_lidar'}
+[0.013596] (ida_lidar) JobProgress: {'identifier': 'ida_lidar', 'progress': 'cmake'}
+[0.015210] (ida_lidar) JobProgress: {'identifier': 'ida_lidar', 'progress': 'build'}
+[0.015910] (ida_lidar) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar', '--', '-j6', '-l6'], 'cwd': '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'vboxuser', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/vboxuser', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '2224', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=16a2a380242acad83b1b752969ea15e0', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/vboxuser/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'vboxuser', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome\\x2dsession\\x2dmanager.slice/gnome-session-manager@ubuntu.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'vboxuser', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/vboxuser:@/tmp/.ICE-unix/2224,unix/vboxuser:/tmp/.ICE-unix/2224', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c23bdc1e_7559_4871_9121_79292e582a7c', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.MNI3N3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.141', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/vboxuser/ros2_ws/install/first_pkg:/home/vboxuser/ros2_ws/install/first_cpp:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=16a2a380242acad83b1b752969ea15e0', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/vboxuser/ros2_ws/install/first_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/vboxuser/ros2_ws/install/first_cpp:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/vboxuser/ros2_ws/install/first_pkg:/opt/ros/jazzy'}), 'shell': False}
+[0.047477] (ida_lidar) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[0.104664] (-) TimerEvent: {}
+[0.205165] (-) TimerEvent: {}
+[0.210852] (ida_lidar) StdoutLine: {'line': b'-- Found rclcpp: 28.1.16 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[0.234150] (ida_lidar) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[0.240618] (ida_lidar) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[0.248833] (ida_lidar) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.257874] (ida_lidar) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.296686] (ida_lidar) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.297394] (ida_lidar) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.308012] (-) TimerEvent: {}
+[0.362698] (ida_lidar) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.397881] (ida_lidar) StdoutLine: {'line': b'-- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)\n'}
+[0.418481] (-) TimerEvent: {}
+[0.439277] (ida_lidar) StdoutLine: {'line': b'-- Found pcl_conversions: 2.6.2 (/opt/ros/jazzy/share/pcl_conversions/cmake)\n'}
+[0.474014] (ida_lidar) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/pcl/Modules/FindFLANN.cmake:45 (find_package):\n'}
+[0.474167] (ida_lidar) StderrLine: {'line': b'  Policy CMP0144 is not set: find_package uses upper-case <PACKAGENAME>_ROOT\n'}
+[0.474209] (ida_lidar) StderrLine: {'line': b'  variables.  Run "cmake --help-policy CMP0144" for policy details.  Use the\n'}
+[0.474243] (ida_lidar) StderrLine: {'line': b'  cmake_policy command to set the policy and suppress this warning.\n'}
+[0.474275] (ida_lidar) StderrLine: {'line': b'\n'}
+[0.474308] (ida_lidar) StderrLine: {'line': b'  CMake variable FLANN_ROOT is set to:\n'}
+[0.474341] (ida_lidar) StderrLine: {'line': b'\n'}
+[0.474372] (ida_lidar) StderrLine: {'line': b'    /usr\n'}
+[0.474402] (ida_lidar) StderrLine: {'line': b'\n'}
+[0.474431] (ida_lidar) StderrLine: {'line': b'  For compatibility, find_package is ignoring the variable, but code in a\n'}
+[0.474462] (ida_lidar) StderrLine: {'line': b'  .cmake module might still use it.\n'}
+[0.474492] (ida_lidar) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.474521] (ida_lidar) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:261 (find_package)\n'}
+[0.476302] (ida_lidar) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:306 (find_flann)\n'}
+[0.476384] (ida_lidar) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/pcl/PCLConfig.cmake:570 (find_external_library)\n'}
+[0.476417] (ida_lidar) StderrLine: {'line': b'  /opt/ros/jazzy/share/pcl_conversions/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[0.476449] (ida_lidar) StderrLine: {'line': b'  /opt/ros/jazzy/share/pcl_conversions/cmake/pcl_conversionsConfig.cmake:41 (include)\n'}
+[0.476478] (ida_lidar) StderrLine: {'line': b'  CMakeLists.txt:17 (find_package)\n'}
+[0.476507] (ida_lidar) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[0.476536] (ida_lidar) StderrLine: {'line': b'\x1b[0m\n'}
+[0.476565] (ida_lidar) StdoutLine: {'line': b'-- Found flann version 1.9.2\n'}
+[0.520042] (-) TimerEvent: {}
+[0.620794] (-) TimerEvent: {}
+[0.740106] (-) TimerEvent: {}
+[0.802727] (ida_lidar) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[0.808058] (ida_lidar) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[0.810430] (ida_lidar) StdoutLine: {'line': b'-- Could NOT find Pcap (missing: PCAP_LIBRARIES PCAP_INCLUDE_DIRS) \n'}
+[0.864293] (-) TimerEvent: {}
+[0.964635] (-) TimerEvent: {}
+[1.106572] (-) TimerEvent: {}
+[1.150159] (ida_lidar) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[1.155979] (ida_lidar) StdoutLine: {'line': b'-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)\n'}
+[1.206910] (-) TimerEvent: {}
+[1.308340] (-) TimerEvent: {}
+[1.414139] (-) TimerEvent: {}
+[1.466208] (ida_lidar) StdoutLine: {'line': b'-- Found Qhull version 8.0.2\n'}
+[1.514885] (-) TimerEvent: {}
+[1.615531] (-) TimerEvent: {}
+[1.762301] (-) TimerEvent: {}
+[1.790084] (ida_lidar) StdoutLine: {'line': b'-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)\n'}
+[1.862687] (-) TimerEvent: {}
+[1.966114] (-) TimerEvent: {}
+[2.070917] (-) TimerEvent: {}
+[2.099829] (ida_lidar) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at CMakeLists.txt:20 (find_package):\n'}
+[2.100032] (ida_lidar) StderrLine: {'line': b'  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.\n'}
+[2.100076] (ida_lidar) StderrLine: {'line': b'  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy\n'}
+[2.100112] (ida_lidar) StderrLine: {'line': b'  command to set the policy and suppress this warning.\n'}
+[2.100148] (ida_lidar) StderrLine: {'line': b'\n'}
+[2.100181] (ida_lidar) StderrLine: {'line': b'  CMake variable PCL_ROOT is set to:\n'}
+[2.100213] (ida_lidar) StderrLine: {'line': b'\n'}
+[2.100244] (ida_lidar) StderrLine: {'line': b'    /usr\n'}
+[2.100276] (ida_lidar) StderrLine: {'line': b'\n'}
+[2.100306] (ida_lidar) StderrLine: {'line': b'  For compatibility, CMake is ignoring the variable.\n'}
+[2.100336] (ida_lidar) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.100367] (ida_lidar) StderrLine: {'line': b'\x1b[0m\n'}
+[2.174231] (-) TimerEvent: {}
+[2.175258] (ida_lidar) StdoutLine: {'line': b'-- Configuring done (2.1s)\n'}
+[2.274562] (-) TimerEvent: {}
+[2.299623] (ida_lidar) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[2.304337] (ida_lidar) StdoutLine: {'line': b'-- Build files have been written to: /home/vboxuser/Desktop/pcl/ros/build/ida_lidar\n'}
+[2.349815] (ida_lidar) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/buoy_lidar.dir/src/main.cpp.o\x1b[0m\n'}
+[2.349999] (ida_lidar) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/buoy_lidar.dir/src/BuoyDetector.cpp.o\x1b[0m\n'}
+[2.374913] (-) TimerEvent: {}
+[2.476270] (-) TimerEvent: {}
+[2.577429] (-) TimerEvent: {}
+[2.677942] (-) TimerEvent: {}
+[2.779762] (-) TimerEvent: {}
+[2.891348] (-) TimerEvent: {}
+[3.008419] (-) TimerEvent: {}
+[3.109718] (-) TimerEvent: {}
+[3.260697] (-) TimerEvent: {}
+[3.376844] (-) TimerEvent: {}
+[3.533813] (-) TimerEvent: {}
+[3.644392] (-) TimerEvent: {}
+[3.748237] (-) TimerEvent: {}
+[3.934447] (-) TimerEvent: {}
+[4.045158] (-) TimerEvent: {}
+[4.154957] (-) TimerEvent: {}
+[4.257024] (-) TimerEvent: {}
+[4.364643] (-) TimerEvent: {}
+[4.478186] (-) TimerEvent: {}
+[4.517829] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid BuoyDetector::\x1b[01;32m\x1b[KapplyROI\x1b[m\x1b[K(pcl::PointCloud<pcl::PointXYZ>::Ptr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.518037] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:28:65:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcloud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.518099] (ida_lidar) StderrLine: {'line': b'   28 | void BuoyDetector::applyROI(\x1b[01;35m\x1b[Kpcl::PointCloud<pcl::PointXYZ>::Ptr cloud\x1b[m\x1b[K) {\n'}
+[4.518140] (ida_lidar) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[4.518217] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid BuoyDetector::\x1b[01;32m\x1b[Kdownsample\x1b[m\x1b[K(pcl::PointCloud<pcl::PointXYZ>::Ptr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.518267] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:32:67:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcloud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.518300] (ida_lidar) StderrLine: {'line': b'   32 | void BuoyDetector::downsample(\x1b[01;35m\x1b[Kpcl::PointCloud<pcl::PointXYZ>::Ptr cloud\x1b[m\x1b[K) {\n'}
+[4.518334] (ida_lidar) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[4.518364] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid BuoyDetector::\x1b[01;32m\x1b[KremoveWaterSurface\x1b[m\x1b[K(pcl::PointCloud<pcl::PointXYZ>::Ptr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.518397] (ida_lidar) StderrLine: {'line': b'\x1b[01m\x1b[K/home/vboxuser/Desktop/pcl/ros/src/ida_lidar/src/BuoyDetector.cpp:36:75:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcloud\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter\x07-Wunused-parameter\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[4.518432] (ida_lidar) StderrLine: {'line': b'   36 | void BuoyDetector::removeWaterSurface(\x1b[01;35m\x1b[Kpcl::PointCloud<pcl::PointXYZ>::Ptr cloud\x1b[m\x1b[K) {\n'}
+[4.518462] (ida_lidar) StderrLine: {'line': b'      |                                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~\x1b[m\x1b[K\n'}
+[4.620619] (-) TimerEvent: {}
+[4.724116] (-) TimerEvent: {}
+[4.826111] (-) TimerEvent: {}
+[4.994665] (-) TimerEvent: {}
+[5.112390] (-) TimerEvent: {}
+[5.223161] (-) TimerEvent: {}
+[5.359306] (-) TimerEvent: {}
+[5.466795] (-) TimerEvent: {}
+[5.588239] (-) TimerEvent: {}
+[5.788219] (-) TimerEvent: {}
+[5.889214] (-) TimerEvent: {}
+[6.062579] (-) TimerEvent: {}
+[6.190667] (-) TimerEvent: {}
+[6.307455] (-) TimerEvent: {}
+[6.443482] (-) TimerEvent: {}
+[6.545246] (-) TimerEvent: {}
+[6.650740] (-) TimerEvent: {}
+[6.775479] (-) TimerEvent: {}
+[6.906898] (-) TimerEvent: {}
+[7.011763] (-) TimerEvent: {}
+[7.171184] (-) TimerEvent: {}
+[7.278372] (-) TimerEvent: {}
+[7.402086] (-) TimerEvent: {}
+[7.544317] (-) TimerEvent: {}
+[7.739096] (-) TimerEvent: {}
+[7.918246] (-) TimerEvent: {}
+[8.138853] (-) TimerEvent: {}
+[8.309804] (-) TimerEvent: {}
+[8.447205] (-) TimerEvent: {}
+[8.644934] (-) TimerEvent: {}
+[8.977653] (-) TimerEvent: {}
+[9.172903] (-) TimerEvent: {}
+[9.322450] (-) TimerEvent: {}
+[9.470080] (-) TimerEvent: {}
+[9.650793] (-) TimerEvent: {}
+[9.658937] (ida_lidar) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable buoy_lidar\x1b[0m\n'}
+[9.751633] (-) TimerEvent: {}
+[9.869591] (-) TimerEvent: {}
+[9.972569] (-) TimerEvent: {}
+[10.074074] (-) TimerEvent: {}
+[10.175586] (-) TimerEvent: {}
+[10.297037] (-) TimerEvent: {}
+[10.398390] (-) TimerEvent: {}
+[10.406187] (ida_lidar) StdoutLine: {'line': b'[100%] Built target buoy_lidar\n'}
+[10.419807] (ida_lidar) CommandEnded: {'returncode': 0}
+[10.420406] (ida_lidar) JobProgress: {'identifier': 'ida_lidar', 'progress': 'install'}
+[10.430388] (ida_lidar) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar'], 'cwd': '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'GZ_SIM_RESOURCE_PATH': '/opt/ros/jazzy/share', 'USER': 'vboxuser', 'GZ_CONFIG_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/share/gz:/opt/ros/jazzy/opt/sdformat_vendor/share/gz:/opt/ros/jazzy/opt/gz_gui_vendor/share/gz:/opt/ros/jazzy/opt/gz_transport_vendor/share/gz:/opt/ros/jazzy/opt/gz_rendering_vendor/share/gz:/opt/ros/jazzy/opt/gz_plugin_vendor/share/gz:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/share/gz:/opt/ros/jazzy/opt/gz_msgs_vendor/share/gz:/opt/ros/jazzy/opt/gz_common_vendor/share/gz', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/gz_sim_vendor/lib:/opt/ros/jazzy/opt/gz_sensors_vendor/lib:/opt/ros/jazzy/opt/gz_physics_vendor/lib:/opt/ros/jazzy/opt/sdformat_vendor/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_gui_vendor/lib:/opt/ros/jazzy/opt/gz_transport_vendor/lib:/opt/ros/jazzy/opt/gz_rendering_vendor/lib:/opt/ros/jazzy/opt/gz_plugin_vendor/lib:/opt/ros/jazzy/opt/gz_fuel_tools_vendor/lib:/opt/ros/jazzy/opt/gz_msgs_vendor/lib:/opt/ros/jazzy/opt/gz_common_vendor/lib:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_tools_vendor/lib:/opt/ros/jazzy/opt/gz_ogre_next_vendor/lib:/opt/ros/jazzy/opt/gz_dartsim_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/vboxuser', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'DBUS_STARTER_BUS_TYPE': 'session', 'SYSTEMD_EXEC_PID': '2224', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus,guid=16a2a380242acad83b1b752969ea15e0', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/vboxuser/ros2_ws/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'vboxuser', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/app.slice/app-gnome\\x2dsession\\x2dmanager.slice/gnome-session-manager@ubuntu.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'vboxuser', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/opt/ros/jazzy/opt/gz_msgs_vendor/bin:/opt/ros/jazzy/opt/gz_tools_vendor/bin:/opt/ros/jazzy/opt/gz_ogre_next_vendor/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/vboxuser:@/tmp/.ICE-unix/2224,unix/vboxuser:/tmp/.ICE-unix/2224', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/c23bdc1e_7559_4871_9121_79292e582a7c', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.MNI3N3', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.141', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/vboxuser/ros2_ws/install/first_pkg:/home/vboxuser/ros2_ws/install/first_cpp:/opt/ros/jazzy', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/vboxuser/Desktop/pcl/ros/build/ida_lidar', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'DBUS_STARTER_ADDRESS': 'unix:path=/run/user/1000/bus,guid=16a2a380242acad83b1b752969ea15e0', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/vboxuser/ros2_ws/install/first_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600', 'CMAKE_PREFIX_PATH': '/home/vboxuser/ros2_ws/install/first_cpp:/opt/ros/jazzy/opt/gz_sim_vendor:/opt/ros/jazzy/opt/gz_sensors_vendor:/opt/ros/jazzy/opt/gz_physics_vendor:/opt/ros/jazzy/opt/sdformat_vendor:/opt/ros/jazzy/opt/gz_gui_vendor:/opt/ros/jazzy/opt/gz_transport_vendor:/opt/ros/jazzy/opt/gz_rendering_vendor:/opt/ros/jazzy/opt/gz_plugin_vendor:/opt/ros/jazzy/opt/gz_fuel_tools_vendor:/opt/ros/jazzy/opt/gz_msgs_vendor:/opt/ros/jazzy/opt/gz_common_vendor:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_tools_vendor:/opt/ros/jazzy/opt/gz_ogre_next_vendor:/opt/ros/jazzy/opt/gz_dartsim_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/vboxuser/ros2_ws/install/first_pkg:/opt/ros/jazzy'}), 'shell': False}
+[10.438460] (ida_lidar) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[10.438858] (ida_lidar) StdoutLine: {'line': b'-- Installing: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/lib/ida_lidar/buoy_lidar\n'}
+[10.443114] (ida_lidar) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/vboxuser/Desktop/pcl/ros/install/ida_lidar/lib/ida_lidar/buoy_lidar" to ""\n'}
+[10.443258] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ament_index/resource_index/package_run_dependencies/ida_lidar\n'}
+[10.443388] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ament_index/resource_index/parent_prefix_path/ida_lidar\n'}
+[10.443425] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/environment/ament_prefix_path.sh\n'}
+[10.443462] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/environment/ament_prefix_path.dsv\n'}
+[10.443497] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/environment/path.sh\n'}
+[10.443530] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/environment/path.dsv\n'}
+[10.443562] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/local_setup.bash\n'}
+[10.443600] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/local_setup.sh\n'}
+[10.443634] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/local_setup.zsh\n'}
+[10.443667] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/local_setup.dsv\n'}
+[10.443901] (ida_lidar) StdoutLine: {'line': b'-- Installing: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/package.dsv\n'}
+[10.443944] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ament_index/resource_index/packages/ida_lidar\n'}
+[10.443976] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/cmake/ida_lidarConfig.cmake\n'}
+[10.444009] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/cmake/ida_lidarConfig-version.cmake\n'}
+[10.444048] (ida_lidar) StdoutLine: {'line': b'-- Up-to-date: /home/vboxuser/Desktop/pcl/ros/install/ida_lidar/share/ida_lidar/package.xml\n'}
+[10.445903] (ida_lidar) CommandEnded: {'returncode': 0}
+[10.469016] (ida_lidar) JobEnded: {'identifier': 'ida_lidar', 'rc': 0}
+[10.470590] (-) EventReactorShutdown: {}
