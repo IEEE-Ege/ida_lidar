@@ -22,3 +22,5 @@ log/
 .vscode/
 .idea/
 .DS_Store
+#VoxelFilter PCL object
+voxel*
