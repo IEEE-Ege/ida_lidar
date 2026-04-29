@@ -34,9 +34,10 @@ colcon build --packages-select ida_lidar
 
 # 4. Source the workspace
 source install/setup.bash
+```
 🖥️ Usage
 To run the full simulation pipeline, you will need to launch the simulator, the data bridge, and the perception node.
-```
+
 
 1. Launch Gazebo Environment:
 Start your simulated world containing the MAVİ İNCİ USV and navigation buoys.
@@ -72,13 +73,13 @@ The node extracts spatial data from lidar_link and mathematically resolves it to
 📁 File Structure
 Plaintext
 ida_lidar/
-├── CMakeLists.txt           # Build instructions & dependency linking
-├── package.xml              # ROS 2 package metadata
-├── include/ida_lidar/       
-│   └── BuoyDetector.hpp     # PCL algorithm class header
-└── src/                     
-    ├── main.cpp             # ROS 2 node wrapper and TF2 integration
-    └── BuoyDetector.cpp     # Voxel grid, RANSAC, and clustering logic
+    ├── CMakeLists.txt           # Build instructions & dependency linking
+    ├── package.xml              # ROS 2 package metadata
+    ├── include/ida_lidar/       
+    │       └── BuoyDetector.hpp     # PCL algorithm class header
+    └── src/                     
+        ├── main.cpp             # ROS 2 node wrapper and TF2 integration
+        └── BuoyDetector.cpp     # Voxel grid, RANSAC, and clustering logic
 
 🤝 Contributing
 For the MAVİ İNCİ engineering team: Ensure that any modifications to the PCL algorithms in BuoyDetector.cpp are profiled for performance, as this node must run in real-time on edge compute during physical water trials.
