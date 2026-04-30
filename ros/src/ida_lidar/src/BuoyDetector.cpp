@@ -1,4 +1,4 @@
-#include "BuoyDetector.hpp"
+#include "ida_lidar/BuoyDetector.hpp"
 #include <pcl/filters/passthrough.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/PointIndices.h>
