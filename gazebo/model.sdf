@@ -23,6 +23,45 @@
           </mesh>
         </geometry>
       </collision>
+
+      <!-- IMU — 100 Hz, body-fixed, provides orientation and angular velocity -->
+      <sensor name="imu_sensor" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <topic>/imu/data</topic>
+        <gz_frame_id>base_link</gz_frame_id>
+        <imu>
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.009</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.009</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.009</stddev></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.1</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.1</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.1</stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+
+      <!-- GPS — 10 Hz, 0.5 m horizontal noise (typical marine GPS) -->
+      <sensor name="gps_sensor" type="navsat">
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <topic>/gps/fix</topic>
+        <gz_frame_id>base_link</gz_frame_id>
+        <navsat>
+          <position_sensing>
+            <horizontal>
+              <noise type="gaussian"><mean>0</mean><stddev>0.5</stddev></noise>
+            </horizontal>
+            <vertical>
+              <noise type="gaussian"><mean>0</mean><stddev>0.5</stddev></noise>
+            </vertical>
+          </position_sensing>
+        </navsat>
+      </sensor>
+
     </link>
 
     <!-- Fixed joint attaching the LiDAR mount to the hull -->

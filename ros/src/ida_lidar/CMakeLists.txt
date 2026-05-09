@@ -19,6 +19,7 @@ find_package(pcl_conversions REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
 
 # 2. Find Point Cloud Library (PCL)
 find_package(PCL 1.12 REQUIRED)
@@ -50,8 +51,20 @@ ament_target_dependencies(buoy_lidar
 )
 target_link_libraries(buoy_lidar ${PCL_LIBRARIES})
 
-# 6. Install the Executable
-install(TARGETS buoy_lidar
+# GPS/IMU odometry node — publishes odom → base_link transform from sensor data
+add_executable(gps_imu_odom
+  src/GpsImuOdometry.cpp
+)
+ament_target_dependencies(gps_imu_odom
+  rclcpp
+  sensor_msgs
+  nav_msgs
+  geometry_msgs
+  tf2_ros
+)
+
+# 6. Install executables
+install(TARGETS buoy_lidar gps_imu_odom
   DESTINATION lib/${PROJECT_NAME}
 )
 

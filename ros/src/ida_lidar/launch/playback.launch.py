@@ -19,6 +19,17 @@ def generate_launch_description():
             description='Absolute path to the ROS 2 bag directory to play back'
         ),
 
+        # --- GPS/IMU Odometry node ---
+        # Converts GPS + IMU data into the odom → base_link TF transform.
+        # This replaces the static_transform_publisher workaround and accounts
+        # for actual boat movement/drift during a run.
+        Node(
+            package='ida_lidar',
+            executable='gps_imu_odom',
+            name='gps_imu_odom',
+            output='screen',
+        ),
+
         # --- Perception node ---
         # Subscribes to /gazebo_lidar/points (replayed from the bag),
         # runs the full PCL pipeline, publishes /buoy_markers.
