@@ -18,7 +18,7 @@ public:
     BuoyLidarNode() : Node("buoy_lidar") 
     {
         detector_ = std::make_shared<BuoyDetector>();
-
+        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("buoy_markers", 10);
         // 1. Initialize the TF2 Buffer and Listener
         // This runs in the background, constantly recording the USV's GPS/IMU movements
         tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
@@ -62,6 +62,23 @@ private:
             local_point.point.x = centroid[0];
             local_point.point.y = centroid[1];
             local_point.point.z = centroid[2];
+
+            // RViz2 visualization logic (put spheres on detected buoys)
+            visualization_msgs::msg::Marker marker;
+            marker.header.frame_id = "odom"; 
+            marker.type = visualization_msgs::msg::Marker::SPHERE;
+            marker.action = visualization_msgs::msg::Marker::ADD;
+            marker.pose.position.x = global_point.point.x;
+            marker.pose.position.y = global_point.point.y;
+            marker.pose.position.z = global_point.point.z;
+            marker.scale.x = 0.5; // Half-meter wide sphere
+            marker.scale.y = 0.5;
+            marker.scale.z = 0.5;
+            marker.color.a = 1.0; // Solid
+            marker.color.r = 1.0; // Red
+
+            marker_array.markers.push_back(marker);
+            marker_pub_->publish(marker_array);
 
             // 4. Transform to Global Coordinates ("odom" or "map")
             geometry_msgs::msg::PointStamped global_point;
