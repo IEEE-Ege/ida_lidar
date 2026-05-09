@@ -6,7 +6,7 @@
     <!-- Main hull link — named base_link to match TF2 convention -->
     <link name='base_link'>
       <visual name='visual'>
-        <pose>0 0 0 -1.5708 0 0</pose>
+        <pose>0 0 0.5 1.5708 0 0</pose>
         <geometry>
           <mesh>
             <uri>Montaj1.STL</uri>
@@ -15,7 +15,7 @@
         </geometry>
       </visual>
       <collision name='collision'>
-        <pose>0 0 0 -1.5708 0 0</pose>
+        <pose>0 0 0.5 1.5708 0 0</pose>
         <geometry>
           <mesh>
             <uri>Montaj1.STL</uri>
