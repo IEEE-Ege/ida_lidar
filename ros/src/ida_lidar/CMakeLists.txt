@@ -18,6 +18,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(pcl_conversions REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 
 # 2. Find Point Cloud Library (PCL)
 find_package(PCL 1.12 REQUIRED)
@@ -42,6 +43,7 @@ ament_target_dependencies(buoy_lidar
   rclcpp
   sensor_msgs
   geometry_msgs
+  visualization_msgs
   pcl_conversions
   tf2_ros
   tf2_geometry_msgs
@@ -58,9 +60,8 @@ install(DIRECTORY include/
   DESTINATION include
 )
 
-# (Optional: Uncomment below if you add the launch and rviz folders later)
-# install(DIRECTORY launch rviz
-#   DESTINATION share/${PROJECT_NAME}
-# )
+install(DIRECTORY launch rviz
+  DESTINATION share/${PROJECT_NAME}
+)
 
 ament_package()

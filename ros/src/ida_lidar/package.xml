@@ -2,10 +2,10 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ida_lidar</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="vboxuser@todo.todo">vboxuser</maintainer>
-  <license>TODO: License declaration</license>
+  <version>0.1.0</version>
+  <description>ROS 2 Jazzy LiDAR perception package for the MAVİ İNCİ USV — detects and localises maritime buoys using PCL and TF2.</description>
+  <maintainer email="yalinoner@gmail.com">Yalın Öner</maintainer>
+  <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
@@ -16,6 +16,7 @@
   <depend>tf2_ros</depend>
   <depend>tf2_geometry_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>visualization_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
