@@ -1,0 +1,65 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='ida_model'>
+    <static>true</static>
+
+    <!-- Main hull link — named base_link to match TF2 convention -->
+    <link name='base_link'>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>Montaj1.STL</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>Montaj1.STL</uri>
+            <scale>1.0 1.0 1.0</scale>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- Fixed joint attaching the LiDAR mount to the hull -->
+    <joint name='lidar_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>lidar_link</child>
+    </joint>
+
+    <!-- LiDAR link — positioned 0.5m forward and 0.5m above the hull origin -->
+    <link name='lidar_link'>
+      <pose>0.5 0 0.5 0 0 0</pose>
+
+      <sensor name='lidar_3d' type='gpu_lidar'>
+        <always_on>true</always_on>
+        <update_rate>10</update_rate>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>1024</samples>
+              <resolution>1</resolution>
+              <min_angle>-3.14159</min_angle>
+              <max_angle>3.14159</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>16</samples>
+              <resolution>1</resolution>
+              <min_angle>-0.26</min_angle>
+              <max_angle>0.26</max_angle>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.5</min>
+            <max>100.0</max>
+          </range>
+        </lidar>
+        <topic>/gazebo_lidar/points</topic>
+        <gz_frame_id>lidar_link</gz_frame_id>
+      </sensor>
+    </link>
+
+  </model>
+</sdf>
