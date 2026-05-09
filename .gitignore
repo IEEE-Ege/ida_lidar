@@ -1,0 +1,25 @@
+# ROS 2 colcon build artefacts
+build/
+install/
+log/
+
+# ROS 2 test logs
+test_results/
+*.log
+
+# Launch and RViz config — kept on test branch only
+ros/src/ida_lidar/launch/
+ros/src/ida_lidar/rviz/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
