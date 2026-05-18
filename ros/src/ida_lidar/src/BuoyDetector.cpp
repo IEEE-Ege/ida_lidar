@@ -1,54 +1,56 @@
 #include "ida_lidar/BuoyDetector.hpp"
 #include <pcl/filters/passthrough.h>
 #include <pcl/filters/voxel_grid.h>
-#include <pcl/filters/extract_indices.h>
-#include <pcl/sample_consensus/method_types.h>
-#include <pcl/sample_consensus/model_types.h>
-#include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/search/kdtree.h>
 #include <pcl/PointIndices.h>
 #include <pcl/ModelCoefficients.h>
+#include <cmath>
+#include <cfloat>
 
-// ROI limits — tune these during water trials
-static constexpr float ROI_X_MIN = -30.0f, ROI_X_MAX = 30.0f;  // left/right
-static constexpr float ROI_Y_MIN = -30.0f, ROI_Y_MAX = 30.0f;  // forward/back
-static constexpr float ROI_Z_MIN =  -0.5f, ROI_Z_MAX =  3.0f;  // height
+// 2D ROI — sized to RPLIDAR C1's reliable outdoor range
+static constexpr float ROI_X_MIN = -10.0f, ROI_X_MAX = 10.0f;
+static constexpr float ROI_Y_MIN = -10.0f, ROI_Y_MAX = 10.0f;
 
-BuoyDetector::BuoyDetector() {
-    // Initialization code if needed
-}
+BuoyDetector::BuoyDetector() {}
 
-std::vector<pcl::PointIndices> BuoyDetector::processCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr input_cloud) {
-    // 1. ROI
+std::vector<pcl::PointIndices> BuoyDetector::processCloud(
+    pcl::PointCloud<pcl::PointXYZ>::Ptr input_cloud)
+{
     applyROI(input_cloud);
-    
-    // 2. Voxel Grid
     downsample(input_cloud);
-    
-    // 3. RANSAC Water Removal
-    removeWaterSurface(input_cloud);
-    
-    // 4. Clustering
+
+    if (input_cloud->empty()) { return {}; }
+
     pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>);
     tree->setInputCloud(input_cloud);
 
-    std::vector<pcl::PointIndices> clusters;
+    std::vector<pcl::PointIndices> raw_clusters;
     pcl::EuclideanClusterExtraction<pcl::PointXYZ> ec;
-    ec.setClusterTolerance(0.5);  // max distance between points in the same cluster (metres)
-    ec.setMinClusterSize(5);      // ignore clusters with fewer points (noise)
-    ec.setMaxClusterSize(500);    // ignore clusters with more points (not a buoy)
+    ec.setClusterTolerance(0.3);  // 2D points on a buoy arc are close together
+    ec.setMinClusterSize(3);      // a buoy at max range returns ~4 pts — 3 is the floor
+    ec.setMaxClusterSize(50);     // arc segments are small; anything larger is structure
     ec.setSearchMethod(tree);
     ec.setInputCloud(input_cloud);
-    ec.extract(clusters);
+    ec.extract(raw_clusters);
 
-    return clusters;
+    // Reject clusters whose physical width doesn't match a buoy
+    std::vector<pcl::PointIndices> valid_clusters;
+    for (const auto & cluster : raw_clusters) {
+        if (validArcSize(input_cloud, cluster)) {
+            valid_clusters.push_back(cluster);
+        }
+    }
+
+    return valid_clusters;
 }
 
-void BuoyDetector::applyROI(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) {
+void BuoyDetector::applyROI(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
+{
     pcl::PassThrough<pcl::PointXYZ> pass;
     pass.setInputCloud(cloud);
 
+    // 2D sensor — only X and Y are meaningful, no Z filter
     pass.setFilterFieldName("x");
     pass.setFilterLimits(ROI_X_MIN, ROI_X_MAX);
     pass.filter(*cloud);
@@ -56,39 +58,35 @@ void BuoyDetector::applyROI(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) {
     pass.setFilterFieldName("y");
     pass.setFilterLimits(ROI_Y_MIN, ROI_Y_MAX);
     pass.filter(*cloud);
-
-    pass.setFilterFieldName("z");
-    pass.setFilterLimits(ROI_Z_MIN, ROI_Z_MAX);
-    pass.filter(*cloud);
 }
 
-void BuoyDetector::downsample(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) {
+void BuoyDetector::downsample(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
+{
     pcl::VoxelGrid<pcl::PointXYZ> vg;
     vg.setInputCloud(cloud);
     vg.setLeafSize(voxel_size_, voxel_size_, voxel_size_);
     vg.filter(*cloud);
 }
 
-void BuoyDetector::removeWaterSurface(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud) {
-    pcl::SACSegmentation<pcl::PointXYZ> seg;
-    seg.setOptimizeCoefficients(true);
-    seg.setModelType(pcl::SACMODEL_PLANE);
-    seg.setMethodType(pcl::SAC_RANSAC);
-    seg.setDistanceThreshold(water_distance_threshold_);
-    seg.setInputCloud(cloud);
+bool BuoyDetector::validArcSize(const pcl::PointCloud<pcl::PointXYZ>::Ptr & cloud,
+                                 const pcl::PointIndices & cluster) const
+{
+    float min_angle =  FLT_MAX;
+    float max_angle = -FLT_MAX;
+    float dist_sum  =  0.0f;
 
-    pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
-    pcl::ModelCoefficients::Ptr coefficients(new pcl::ModelCoefficients);
-    seg.segment(*inliers, *coefficients);
-
-    if (inliers->indices.empty()) {
-        return; // No dominant plane found, leave cloud untouched
+    for (int idx : cluster.indices) {
+        const auto & pt = cloud->points[idx];
+        float angle = std::atan2(pt.y, pt.x);
+        float dist  = std::sqrt(pt.x * pt.x + pt.y * pt.y);
+        if (angle < min_angle) min_angle = angle;
+        if (angle > max_angle) max_angle = angle;
+        dist_sum += dist;
     }
 
-    // Remove the inliers (water plane), keep everything above it
-    pcl::ExtractIndices<pcl::PointXYZ> extract;
-    extract.setInputCloud(cloud);
-    extract.setIndices(inliers);
-    extract.setNegative(true); // true = keep the NON-plane points
-    extract.filter(*cloud);
+    // Chord length = average_distance × angular_span (small angle approximation)
+    float avg_dist   = dist_sum / static_cast<float>(cluster.indices.size());
+    float chord      = avg_dist * (max_angle - min_angle);
+
+    return chord >= MIN_BUOY_ARC_M && chord <= MAX_BUOY_ARC_M;
 }

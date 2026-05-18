@@ -20,6 +20,7 @@ find_package(tf2_ros REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(laser_geometry REQUIRED)
 
 # 2. Find Point Cloud Library (PCL)
 find_package(PCL 1.12 REQUIRED)
@@ -48,6 +49,7 @@ ament_target_dependencies(buoy_lidar
   pcl_conversions
   tf2_ros
   tf2_geometry_msgs
+  laser_geometry
 )
 target_link_libraries(buoy_lidar ${PCL_LIBRARIES})
 

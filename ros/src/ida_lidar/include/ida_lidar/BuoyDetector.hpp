@@ -7,19 +7,18 @@
 
 class BuoyDetector {
 public:
-    // Constructor
     BuoyDetector();
-
-    // The main public function you will call from outside
     std::vector<pcl::PointIndices> processCloud(pcl::PointCloud<pcl::PointXYZ>::Ptr input_cloud);
 
 private:
-    // Internal helper functions for each step of the pipeline
     void applyROI(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
     void downsample(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
-    void removeWaterSurface(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud);
-    
-    // Internal variables (e.g., thresholds you might want to tune)
-    float voxel_size_ = 0.1f;
-    float water_distance_threshold_ = 0.2f;
+    bool validArcSize(const pcl::PointCloud<pcl::PointXYZ>::Ptr & cloud,
+                      const pcl::PointIndices & cluster) const;
+
+    float voxel_size_ = 0.05f;
+
+    // Expected physical width of a buoy at any range (metres)
+    static constexpr float MIN_BUOY_ARC_M = 0.1f;  // smaller = noise / glint
+    static constexpr float MAX_BUOY_ARC_M = 1.5f;  // larger  = dock edge / structure
 };

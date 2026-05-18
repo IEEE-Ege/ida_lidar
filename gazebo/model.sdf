@@ -74,30 +74,31 @@
     <link name='lidar_link'>
       <pose>0.5 0 0.5 0 0 0</pose>
 
-      <sensor name='lidar_3d' type='gpu_lidar'>
+      <!-- RPLIDAR C1: single horizontal plane, 360°, 12 m range, 10 Hz -->
+      <sensor name='lidar_2d' type='gpu_lidar'>
         <always_on>true</always_on>
         <update_rate>10</update_rate>
         <lidar>
           <scan>
             <horizontal>
-              <samples>1024</samples>
+              <samples>1080</samples>
               <resolution>1</resolution>
               <min_angle>-3.14159</min_angle>
               <max_angle>3.14159</max_angle>
             </horizontal>
             <vertical>
-              <samples>16</samples>
+              <samples>1</samples>
               <resolution>1</resolution>
-              <min_angle>-0.26</min_angle>
-              <max_angle>0.26</max_angle>
+              <min_angle>0</min_angle>
+              <max_angle>0</max_angle>
             </vertical>
           </scan>
           <range>
-            <min>0.5</min>
-            <max>100.0</max>
+            <min>0.15</min>
+            <max>12.0</max>
           </range>
         </lidar>
-        <topic>/gazebo_lidar/points</topic>
+        <topic>/scan</topic>
         <gz_frame_id>lidar_link</gz_frame_id>
       </sensor>
     </link>
