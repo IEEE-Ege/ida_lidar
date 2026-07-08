@@ -1,4 +1,4 @@
-# IDA LiDAR Perception (MAVİ İNCİ) — RPLIDAR C1 Branch
+# IDA LiDAR Perception (MAVİ İNCİ) — Live Test Branch
 
 **A ROS 2 Humble perception stack for autonomous Unmanned Surface Vehicles (USVs).**
 
