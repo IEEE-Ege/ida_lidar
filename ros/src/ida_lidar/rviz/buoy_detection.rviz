@@ -1,0 +1,117 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Grid1
+        - /Raw LiDAR1
+        - /Buoy Detections1
+        - /TF1
+      Splitter Ratio: 0.5
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Views
+    Name: Views
+
+Visualization Manager:
+  Class: ""
+  Displays:
+
+    # ---- Floor grid ----
+    # Gives teammates a spatial reference for scale and orientation.
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1       # 1 metre per square
+      Color: 160; 160; 164
+      Plane: XY
+      Plane Cell Count: 20
+      Reference Frame: <Fixed Frame>
+      Alpha: 0.5
+
+    # ---- Raw LiDAR scan ----
+    # Shows every point coming off the sensor so teammates can see
+    # exactly what the pipeline receives before any filtering.
+    # RPLIDAR C1 is a 2D sensor publishing sensor_msgs/LaserScan on /scan
+    # (not a 3D PointCloud2 — that was the main branch's 3D sensor topic).
+    - Class: rviz_default_plugins/LaserScan
+      Name: Raw LiDAR
+      Enabled: true
+      Topic:
+        Value: /scan
+        Depth: 5
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+      Style: Points
+      Size (Pixels): 3
+      # Colour by intensity, not height — there is no height axis on a 2D
+      # scan. This mirrors BuoyDetector's own filtering logic: buoys are
+      # retroreflective and return high intensity, water glints are dim
+      # and get rejected below MIN_INTENSITY. Seeing the same gradient in
+      # RViz makes it obvious why a point does or doesn't survive the filter.
+      Color Transformer: Intensity
+      Channel Name: intensity
+      Autocompute Intensity Bounds: true
+      Use rainbow: true
+      Invert Rainbow: false
+      Alpha: 1.0
+
+    # ---- Buoy detection markers ----
+    # MarkerArray receives both namespaces published by BuoyLidarNode.cpp.
+    # Each namespace is a separate checkbox in RViz2 so teammates can
+    # toggle spheres and labels independently.
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Buoy Detections
+      Enabled: true
+      Topic:
+        Value: /buoy_markers
+        Depth: 5
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+      Namespaces:
+        buoy_spheres: true
+        buoy_labels: true
+
+    # ---- Coordinate frames ----
+    # Shows the odom → base_link → lidar_link chain as axes in 3D.
+    # Essential for teammates to understand why a buoy appears where it does.
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Frame Timeout: 15
+      Marker Scale: 0.5
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+
+  Enabled: true
+
+  Global Options:
+    Background Color: 48; 48; 48   # dark grey — high contrast for coloured markers
+    Fixed Frame: odom
+    Frame Rate: 30
+
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+
+  Views:
+    Current:
+      # Orbit lets teammates rotate/zoom freely with the mouse.
+      # Distance and Pitch set the default "observer above the water" angle.
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Distance: 25
+      Pitch: 0.785   # ~45 degrees — looking down at an angle
+      Yaw: 0.785
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Target Frame: <Fixed Frame>
+    Saved: ~

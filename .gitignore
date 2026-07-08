@@ -9,7 +9,6 @@ test_results/
 
 # Launch and RViz config — kept on test branch only
 ros/src/ida_lidar/launch/
-ros/src/ida_lidar/rviz/
 
 # Python cache
 __pycache__/
