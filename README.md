@@ -107,17 +107,39 @@ ros2 run ida_lidar buoy_lidar
 
 ### Physical hardware (real RPLIDAR C1)
 
-Install the RPLIDAR ROS 2 driver and launch it before starting the nodes:
+This package talks to the sensor directly — no external `rplidar_ros` package
+needed. The C1 is wired through Slamtec's official USB adapter board (which
+appears as `/dev/ttyUSB0`); `rplidar_driver` owns the serial connection and the
+motor (start/stop/speed) itself via a vendored copy of Slamtec's SDK
+(`third_party/rplidar_sdk/`, see its `NOTICE.md` for provenance/license).
 
 ```bash
-sudo apt install ros-humble-rplidar-ros
-ros2 run rplidar_ros rplidar_composition --ros-args \
+ros2 run ida_lidar rplidar_driver --ros-args \
     -p serial_port:=/dev/ttyUSB0 -p frame_id:=lidar_link
+```
+
+The motor starts automatically on launch. To stop/restart it without killing
+the node (e.g. for a safety pause between runs):
+
+```bash
+ros2 service call /stop_motor std_srvs/srv/Empty {}
+ros2 service call /start_motor std_srvs/srv/Empty {}
 ```
 
 Then run `gps_imu_odom` and `buoy_lidar` as above.
 
 ## Node Details
+
+### `rplidar_driver`
+| | |
+|---|---|
+| Publishes | `/scan` (`sensor_msgs/LaserScan`) |
+| Services | `/start_motor`, `/stop_motor` (`std_srvs/Empty`) |
+| Params | `serial_port` (`/dev/ttyUSB0`), `serial_baudrate` (`460800`), `frame_id` (`lidar_link`), `inverted`, `angle_compensate`, `scan_mode`, `scan_frequency` |
+
+Owns the serial connection to the RPLIDAR C1 and its motor via the vendored
+SDK — see `third_party/rplidar_sdk/`. Replaces the external `rplidar_ros`
+package used previously.
 
 ### `buoy_lidar`
 | | |
@@ -163,14 +185,21 @@ odom
 ida_lidar/
 ├── CMakeLists.txt
 ├── package.xml
+├── third_party/rplidar_sdk/   # vendored Slamtec SDK (BSD-2-Clause) — not authored
+│   ├── LICENSE                #   here; see NOTICE.md for source/commit/license
+│   ├── NOTICE.md
+│   ├── include/
+│   └── src/
 ├── include/ida_lidar/
 │   ├── BuoyDetector.hpp       # PCL pipeline interface + arc filter constants
 │   ├── BuoyLidarNode.hpp      # buoy_lidar node interface
-│   └── GpsImuOdometry.hpp     # gps_imu_odom node interface
+│   ├── GpsImuOdometry.hpp     # gps_imu_odom node interface
+│   └── RplidarNode.hpp        # rplidar_driver node interface
 ├── src/
 │   ├── BuoyLidarNode.cpp      # buoy_lidar node — intensity filter, persistence, markers, main()
 │   ├── BuoyDetector.cpp       # ROI, voxel grid, clustering, arc validation
-│   └── GpsImuOdometry.cpp     # gps_imu_odom node — equirectangular projection, TF broadcast, main()
+│   ├── GpsImuOdometry.cpp     # gps_imu_odom node — equirectangular projection, TF broadcast, main()
+│   └── RplidarNode.cpp        # rplidar_driver node — serial I/O + motor control via the SDK, main()
 ```
 
 Each ROS 2 node is a `.hpp`/`.cpp` pair under `include/ida_lidar/` and `src/`, same as any other class — no file holds more than one node or utility, and each `.cpp` is buildable/readable on its own.

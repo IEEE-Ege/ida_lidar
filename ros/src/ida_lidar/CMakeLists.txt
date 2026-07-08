@@ -21,6 +21,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(laser_geometry REQUIRED)
+find_package(std_srvs REQUIRED)
 
 # 2. Find Point Cloud Library (PCL)
 find_package(PCL 1.12 REQUIRED)
@@ -29,6 +30,8 @@ find_package(PCL 1.12 REQUIRED)
 # This tells the compiler to look in your new 'include' folder AND the PCL folders
 include_directories(
   include
+  third_party/rplidar_sdk/include
+  third_party/rplidar_sdk/src
   ${PCL_INCLUDE_DIRS}
 )
 link_directories(${PCL_LIBRARY_DIRS})
@@ -65,8 +68,29 @@ ament_target_dependencies(gps_imu_odom
   tf2_ros
 )
 
+# RPLIDAR C1 driver — talks to the sensor directly over serial via the vendored
+# SDK (third_party/rplidar_sdk), replacing the external rplidar_ros dependency
+# so this package owns motor start/stop.
+file(GLOB RPLIDAR_SDK_SRC
+  "third_party/rplidar_sdk/src/*.cpp"
+  "third_party/rplidar_sdk/src/arch/linux/*.cpp"
+  "third_party/rplidar_sdk/src/dataunpacker/*.cpp"
+  "third_party/rplidar_sdk/src/dataunpacker/unpacker/*.cpp"
+  "third_party/rplidar_sdk/src/hal/*.cpp"
+)
+add_executable(rplidar_driver
+  src/RplidarNode.cpp
+  ${RPLIDAR_SDK_SRC}
+)
+ament_target_dependencies(rplidar_driver
+  rclcpp
+  sensor_msgs
+  std_srvs
+)
+target_link_libraries(rplidar_driver pthread)
+
 # 6. Install executables
-install(TARGETS buoy_lidar gps_imu_odom
+install(TARGETS buoy_lidar gps_imu_odom rplidar_driver
   DESTINATION lib/${PROJECT_NAME}
 )
 
