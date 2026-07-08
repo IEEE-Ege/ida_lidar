@@ -3,7 +3,7 @@
 <package format="3">
   <name>ida_lidar</name>
   <version>0.1.0</version>
-  <description>ROS 2 Jazzy LiDAR perception package for the MAVİ İNCİ USV — detects and localises maritime buoys using PCL and TF2.</description>
+  <description>ROS 2 Humble LiDAR perception package for the MAVİ İNCİ USV — detects and localises maritime buoys using PCL and TF2.</description>
   <maintainer email="yalinoner@gmail.com">Yalın Öner</maintainer>
   <license>MIT</license>
 

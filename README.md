@@ -1,6 +1,6 @@
 # IDA LiDAR Perception (MAVİ İNCİ) — RPLIDAR C1 Branch
 
-**A ROS 2 Jazzy perception stack for autonomous Unmanned Surface Vehicles (USVs).**
+**A ROS 2 Humble perception stack for autonomous Unmanned Surface Vehicles (USVs).**
 
 This branch adapts the pipeline for the **RPLIDAR C1**, a 2D single-plane LiDAR. The sensor publishes `sensor_msgs/LaserScan` on `/scan` instead of a 3D point cloud. The detection pipeline is rewritten accordingly: RANSAC water surface removal is replaced by intensity thresholding and arc size validation, and a temporal persistence filter is added to suppress wave noise and pitch-induced false returns.
 
@@ -33,20 +33,22 @@ LaserScan (/scan)
 
 ```bash
 sudo apt update
-sudo apt install ros-jazzy-tf2-ros ros-jazzy-tf2-geometry-msgs \
-                 ros-jazzy-geometry-msgs ros-jazzy-ros-gz \
-                 ros-jazzy-laser-geometry libpcl-dev
+sudo apt install ros-humble-tf2-ros ros-humble-tf2-geometry-msgs \
+                 ros-humble-geometry-msgs ros-humble-ros-gz \
+                 ros-humble-laser-geometry libpcl-dev
 ```
 
 ## Installation & Build
 
+The `ros/` folder in this repo *is* the colcon workspace — there's no separate
+workspace to set up elsewhere.
+
 ```bash
-# 1. Clone into your ROS 2 workspace
-cd ~/mavi_inci_ws/src
+# 1. Clone the repo
 git clone -b rplidarc1 <repo-url> Lidar
+cd Lidar/ros
 
 # 2. Install dependencies
-cd ~/mavi_inci_ws
 rosdep install --from-paths src --ignore-src -r -y
 
 # 3. Build
@@ -63,6 +65,8 @@ source install/setup.bash
 **1. Launch Gazebo:**
 
 ```bash
+# from Lidar/ros (the workspace root) — gazebo/ lives one level up, at the repo root
+cd ..
 gz sim -v 4 gazebo/model.sdf
 ```
 
@@ -106,7 +110,7 @@ ros2 run ida_lidar buoy_lidar
 Install the RPLIDAR ROS 2 driver and launch it before starting the nodes:
 
 ```bash
-sudo apt install ros-jazzy-rplidar-ros
+sudo apt install ros-humble-rplidar-ros
 ros2 run rplidar_ros rplidar_composition --ros-args \
     -p serial_port:=/dev/ttyUSB0 -p frame_id:=lidar_link
 ```
@@ -137,10 +141,10 @@ All constants are at the top of their respective source files.
 
 | Parameter | File | Default | Effect |
 |---|---|---|---|
-| `MIN_INTENSITY` | `main.cpp` | `50.0` | Raise to reject more water noise; lower if buoys are missed |
-| `PERSISTENCE_WINDOW` | `main.cpp` | `5` | Frames in the sliding window |
-| `PERSISTENCE_MIN_HITS` | `main.cpp` | `3` | Min frames a detection must appear in to be confirmed |
-| `PERSISTENCE_RADIUS` | `main.cpp` | `1.0 m` | Max displacement between frames to count as the same buoy |
+| `MIN_INTENSITY` | `BuoyLidarNode.cpp` | `50.0` | Raise to reject more water noise; lower if buoys are missed |
+| `PERSISTENCE_WINDOW` | `BuoyLidarNode.cpp` | `5` | Frames in the sliding window |
+| `PERSISTENCE_MIN_HITS` | `BuoyLidarNode.cpp` | `3` | Min frames a detection must appear in to be confirmed |
+| `PERSISTENCE_RADIUS` | `BuoyLidarNode.cpp` | `1.0 m` | Max displacement between frames to count as the same buoy |
 | `MIN_BUOY_ARC_M` | `BuoyDetector.hpp` | `0.1 m` | Minimum physical cluster width |
 | `MAX_BUOY_ARC_M` | `BuoyDetector.hpp` | `1.5 m` | Maximum physical cluster width |
 | `ROI_X/Y` | `BuoyDetector.cpp` | `±10 m` | Detection range box |
@@ -161,12 +165,15 @@ ida_lidar/
 ├── package.xml
 ├── include/ida_lidar/
 │   ├── BuoyDetector.hpp       # PCL pipeline interface + arc filter constants
-│   └── GpsImuOdometry.hpp     # GPS/IMU odometry node interface
+│   ├── BuoyLidarNode.hpp      # buoy_lidar node interface
+│   └── GpsImuOdometry.hpp     # gps_imu_odom node interface
 ├── src/
-│   ├── main.cpp               # buoy_lidar node — intensity filter, persistence, markers
+│   ├── BuoyLidarNode.cpp      # buoy_lidar node — intensity filter, persistence, markers, main()
 │   ├── BuoyDetector.cpp       # ROI, voxel grid, clustering, arc validation
-│   └── GpsImuOdometry.cpp     # gps_imu_odom node — equirectangular projection, TF broadcast
+│   └── GpsImuOdometry.cpp     # gps_imu_odom node — equirectangular projection, TF broadcast, main()
 ```
+
+Each ROS 2 node is a `.hpp`/`.cpp` pair under `include/ida_lidar/` and `src/`, same as any other class — no file holds more than one node or utility, and each `.cpp` is buildable/readable on its own.
 
 ## Contributing
 

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 project(ida_lidar)
 
-# Default to C++17 (Standard for modern ROS 2 Jazzy)
+# Default to C++17 (supported by ROS 2 Humble on Ubuntu 22.04 / GCC 11)
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
@@ -35,8 +35,8 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 # 4. Compile the executable
-add_executable(buoy_lidar 
-  src/main.cpp 
+add_executable(buoy_lidar
+  src/BuoyLidarNode.cpp
   src/BuoyDetector.cpp
 )
 
