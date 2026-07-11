@@ -108,14 +108,25 @@ ros2 run ida_lidar buoy_lidar
 ### Physical hardware (real RPLIDAR C1)
 
 This package talks to the sensor directly — no external `rplidar_ros` package
-needed. The C1 is wired through Slamtec's official USB adapter board (which
-appears as `/dev/ttyUSB0`); `rplidar_driver` owns the serial connection and the
-motor (start/stop/speed) itself via a vendored copy of Slamtec's SDK
-(`third_party/rplidar_sdk/`, see its `NOTICE.md` for provenance/license).
+needed. The C1 is wired through Slamtec's official USB adapter board;
+`rplidar_driver` owns the serial connection and the motor (start/stop/speed)
+itself via a vendored copy of Slamtec's SDK (`third_party/rplidar_sdk/`, see
+its `NOTICE.md` for provenance/license).
+
+**Install the udev rule (one-time setup):**
+
+```bash
+./scripts/install_udev_rules.sh
+```
+
+This creates a stable `/dev/lidar` symlink for the C1's USB-serial bridge, so
+the device path doesn't shift with enumeration order or which USB port it's
+plugged into. Log out/in (or run `newgrp dialout`) afterwards if the script
+added you to the `dialout` group.
 
 ```bash
 ros2 run ida_lidar rplidar_driver --ros-args \
-    -p serial_port:=/dev/ttyUSB0 -p frame_id:=lidar_link
+    -p serial_port:=/dev/lidar -p frame_id:=lidar_link
 ```
 
 The motor starts automatically on launch. To stop/restart it without killing
@@ -135,7 +146,7 @@ Then run `gps_imu_odom` and `buoy_lidar` as above.
 |---|---|
 | Publishes | `/scan` (`sensor_msgs/LaserScan`) |
 | Services | `/start_motor`, `/stop_motor` (`std_srvs/Empty`) |
-| Params | `serial_port` (`/dev/ttyUSB0`), `serial_baudrate` (`460800`), `frame_id` (`lidar_link`), `inverted`, `angle_compensate`, `scan_mode`, `scan_frequency` |
+| Params | `serial_port` (`/dev/lidar`), `serial_baudrate` (`460800`), `frame_id` (`lidar_link`), `inverted`, `angle_compensate`, `scan_mode`, `scan_frequency` |
 
 Owns the serial connection to the RPLIDAR C1 and its motor via the vendored
 SDK — see `third_party/rplidar_sdk/`. Replaces the external `rplidar_ros`

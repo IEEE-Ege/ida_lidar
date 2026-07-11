@@ -1,0 +1,4 @@
+# RPLIDAR C1 (Silicon Labs CP210x USB-UART bridge)
+# Creates a stable /dev/lidar symlink regardless of enumeration order/USB port,
+# and grants group rw access so the node can run without sudo.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", GROUP="dialout", MODE="0660", SYMLINK+="lidar"
