@@ -138,3 +138,13 @@ ida_lidar/
 ## Contributing
 
 For the MAVİ İNCİ engineering team: PCL algorithm changes in `BuoyDetector.cpp` must be profiled for performance — this node runs in real time on edge compute during physical water trials. GPS/IMU parameters (noise, update rates) in `model.sdf` should be updated to match the actual hardware spec before deploying to the physical boat.
+
+---
+
+<div align="center">
+
+💙 **Bu Repo IEEE Ege Mavi İnci İnsansız Deniz Aracı Takımı Yazılım Ekibi Tarafından Oluşturulmuştur, Yazılım Ekibimize Sevgilerle**
+
+[@NightKnight-nx2](https://github.com/NightKnight-nx2) · [@yalinoner](https://github.com/yalinoner) · [@nilayyldz](https://github.com/nilayyldz)
+
+</div>
