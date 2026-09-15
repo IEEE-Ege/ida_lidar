@@ -178,3 +178,13 @@ Each ROS 2 node is a `.hpp`/`.cpp` pair under `include/ida_lidar/` and `src/`, s
 ## Contributing
 
 PCL algorithm changes in `BuoyDetector.cpp` must be profiled on the target hardware (Jetson Nano) before committing — this node runs in real time at 10 Hz during water trials. The `MIN_INTENSITY` threshold and arc size bounds should be re-calibrated against actual competition buoys before each event, as retroreflectivity and size vary between competitions.
+
+---
+
+<div align="center">
+
+💙 **Bu Repo IEEE Ege Mavi İnci İnsansız Deniz Aracı Takımı Yazılım Ekibi Tarafından Oluşturulmuştur, Yazılım Ekibimize Sevgilerle**
+
+[@NightKnight-nx2](https://github.com/NightKnight-nx2) · [@yalinoner](https://github.com/yalinoner) · [@nilayyldz](https://github.com/nilayyldz)
+
+</div>
