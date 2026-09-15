@@ -213,6 +213,16 @@ ida_lidar/
 │   └── RplidarNode.cpp        # rplidar_driver node — serial I/O + motor control via the SDK, main()
 ```
 
+---
+
+<div align="center">
+
+💙 **Bu Repo IEEE Ege Mavi İnci İnsansız Deniz Aracı Takımı Yazılım Ekibi Tarafından Oluşturulmuştur, Yazılım Ekibimize Sevgilerle**
+
+[@NightKnight-nx2](https://github.com/NightKnight-nx2) · [@yalinoner](https://github.com/yalinoner) · [@nilayyldz](https://github.com/nilayyldz)
+
+</div>
+
 Each ROS 2 node is a `.hpp`/`.cpp` pair under `include/ida_lidar/` and `src/`, same as any other class — no file holds more than one node or utility, and each `.cpp` is buildable/readable on its own.
 
 ## Contributing
